@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from .views import slide
 from .views import user
@@ -18,4 +18,5 @@ urlpatterns = [
     path('hotel/rank/category', rank.get_rank_cat_list, name='rank_category'),
     path('hotel/rank/hotel/<str:cat_code>', rank.get_top_rank_list, name='rank'),
 
+    path('users/', include('users.urls')),
 ]

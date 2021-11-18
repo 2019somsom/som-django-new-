@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     email = models.EmailField(max_length=255, default='', unique=True)
-    nickname = models.EmailField(max_length=32, default='', null=False, unique=True)
+    nickname = models.CharField(max_length=32, default='', null=False, unique=True)
     phone = models.CharField(max_length=32, default='')
     gender = models.CharField(max_length=1, default='')
     birth = models.DateField(default='', blank=True)

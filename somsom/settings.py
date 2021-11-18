@@ -37,21 +37,22 @@ ALLOWED_HOSTS = ["127.0.0.1", "localhost", "54.180.155.194"]
 
 # Application definition
 
-INSTALLED_APPS = [
-    #기본 내장앱
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    #사용자앱
-    'eggmorning.apps.EggmorningConfig',
-
-    #확인필요
-    'corsheaders'
+DJANGO_APPS = [
+    'django.contrib.admin',         # 관리용 사이트
+    'django.contrib.auth',          # 인증 시스템
+    'django.contrib.contenttypes',  # 컨텐츠 타입을 위한 프레임워크
+    'django.contrib.sessions',      # 세션 프레임워크
+    'django.contrib.messages',      # 메세징 프레임워크
+    'django.contrib.staticfiles',   # 정적 파일을 관리하는 프레임워크
+    'corsheaders',
 ]
+
+PROJECT_APPS = [
+    'eggmorning.apps.EggmorningConfig',
+    'users.apps.UsersConfig',
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,5 +156,8 @@ STATIC_URL = '/static/'
 # cors
 CORS_ALLOW_ALL_ORIGINS = True
 
+LOGIN_URL = '/users/login/'          # 로그인 URL
+LOGIN_REDIRECT_URL = '/users/main/'  # 로그인 후 URL
+LOGOUT_REDIRECT_URL = '/'            # 로그아웃 후 URL
 # User Custom
-AUTH_USER_MODEL = 'eggmorning.User'
+AUTH_USER_MODEL = 'eggmorning.User'  # 커스텀 인증 모델
